@@ -1,0 +1,37 @@
+{
+  "name": "11typortal",
+  "version": "0.1.1",
+  "description": "11typotal",
+  "main": "eleventy.config.js",
+  "scripts": {
+    "start": "npx netlify-cms-proxy-server & npm run watch",
+    "cleanup": "rm -rf _site",
+    "watch": "npx @11ty/eleventy --serve --quiet & npm run tw:watch",
+    "tw:watch": "npx tailwindcss -i src/__tailwind/tailwind.css -o src/assets/css/style.css --watch",
+    "tw:build": "npx tailwindcss -i src/__tailwind/tailwind.css -o src/assets/css/style.min.css --minify",
+    "debug": "ELEVENTY_ENV=prod DEBUG=* eleventy",
+    "build": "npm run tw:build && npm run debug "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0-canary.15",
+    "@11ty/eleventy-img": "^2.0.1",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.1.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "@tailwindcss/typography": "^0.5.4",
+    "luxon": "^3.0.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.12",
+    "tailwindcss": "^3.1.6"
+  },
+  "dependencies": {
+    "@11ty/eleventy-fetch": "^3.0.0",
+    "dotenv-cli": "^6.0.0",
+    "html-minifier": "^4.0.0",
+    "rss-parser": "^3.12.0"
+  }
+}

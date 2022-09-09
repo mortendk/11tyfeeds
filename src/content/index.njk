@@ -1,0 +1,56 @@
+---
+title: 11ty Portal
+permalink: /index.html
+
+eleventyNavigation:
+  key: main
+  title: Home
+  order: 0
+layout: page.njk
+eleventyExcludeFromCollections: false
+---
+
+<ul>
+{%- for post in collections.all -%}
+  <li><a href="{{ post.url }}">{{ post.url }}</a></li>
+{%- endfor -%}
+</ul>
+{# Feeds: {{ feeds | length }} #}
+numb : {{ feeds | length }}
+
+
+{% for feed in feeds  %}
+<article class="bg-white mb-8">
+    
+    {{ feed.link }} <br>
+    {{ feed.title }} -
+    {# {{ feed.content  | safe | truncate(100) }} <br>  #}
+    date {{ feed.pubDate  | formatDate("DDD T")  }} 
+  </article>
+{% endfor %}
+
+{# 
+<h2 class="text-4xl text-red-400">{{ feeds.info.title}}</h2>
+
+
+<div class="flex">
+  <a href="{{ feeds.url}}" class="block ">
+    <div class="w-4 text-orange-600">{% include "svg/rss.svg" %}</div>
+  </a>
+  <div><a href="{{ feeds.info.link}}" class="underline text-fuchsia-500" target="_blank">Link</a></div>
+  <div>{{ feeds.info.date | formatDate("DDD T") }}</div>
+</div>
+
+{{ feeds.feed | length}}
+{% for item in feeds.feed %}
+<article class="my-4">
+  <h2 class="text-3xl">{{ item.title }}</h2>
+  
+  <div>{{ item.contentSnippet  | safe | truncate(500, true, "?") }}</div>
+  
+  <a href="{{ item.link }}" class="underline text-fuchsia-500" target="_blank">link</a> 
+  <div class="font-bold"> {{ item.pubDate | formatDate("DDD T") }} </div> 
+  <br>  
+</article>
+{% endfor %}
+ #}
